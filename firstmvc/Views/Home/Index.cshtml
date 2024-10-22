@@ -1,0 +1,35 @@
+﻿
+<div class="row ">
+    @foreach (var item in Model)
+    {
+<div class="col-4 mb-3"> 
+        <div class="card" style="width: 18rem;">
+                <a href="/Home/Details?productid=@item.Id">
+
+              <img src="~/images/@item.ImgUrl" class="card-img-top" alt="...">
+              </a>  
+            <div class="card-body">
+                    <div class="row ">
+                        <div class="col-9 mb-2"> @item.Name</div>
+                        
+                    <div class="col-3">
+                            <span class="badge text-bg-info">@item.Rate / 5</span>
+
+                    </div>
+
+                    </div>
+                    <span class="badge text-bg-warning mb-2"><h6>Price:@item.Price</h6> 
+
+        </span>
+
+                    <a href="/Home/Details?productid=@item.Id" class="btn btn-primary">More Details</a>
+                   
+            </div>
+        </div>
+
+</div>
+
+
+
+    }
+</div>

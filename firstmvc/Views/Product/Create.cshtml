@@ -1,0 +1,53 @@
+﻿@model List<Category>
+
+<div class="row mb-3">
+    <h2><a href=""><i class="bi bi-arrow-left"></i></a> Create New Product</h2>
+</div>
+
+<div class="row">
+    <form action="/Product/Create" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="ProductName" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="ProductName" name="Name">
+            <input type="hidden" class="form-control" id="ProductId" name="Id">
+
+            <label for="ProductPrice" class="form-label">Product Price</label>
+            <input type="number" class="form-control" id="ProductPrice" name="Price">
+
+            <label for="ProductDescription" class="form-label">Product Description</label>
+            <input type="text" class="form-control" id="ProductDescription" name="Description">
+
+            <label for="ProductImgUrl" class="form-label">Product Image</label>
+            <input type="file" class="form-control" id="ProductImgUrl" name="ImgUrl" accept="image/*" onchange="previewImage(event)">
+
+            <!-- Image Preview -->
+            <div class="mt-3">
+                <img id="imgPreview" src="#" alt="Image Preview" style="display:none; max-width: 300px;" />
+            </div>
+
+            <label for="ProductCategoryId" class="form-label">Product Category</label>
+            <select name="CategoryId" class="form-control" id="exampleSelect1">
+                @foreach (var item in Model)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script>
+    function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById('imgPreview');
+
+        const reader = new FileReader();
+        reader.onload = function () {
+            const result = reader.result;
+            preview.src = result;
+            preview.style.display = 'block'; // Show the image
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+</script>

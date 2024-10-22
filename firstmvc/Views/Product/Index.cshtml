@@ -1,0 +1,59 @@
+﻿@model List<Product>
+<div class="row">
+    <div class="col-10">
+
+        <h2>All Product</h2>
+    </div>
+    <div class="col-2">
+
+
+        <a href="/Product/Create" class="btn btn-warning">Add Product</a>
+
+
+    </div>
+</div>
+
+<div class="row">
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Rate</th>
+                <th scope="col">Category</th>
+                <th scope="col">Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr class="table-light">
+                    <th scope="row">@item.Id</th>
+                    <td>@item.Name</td>
+                    <td>
+                        @item.Price
+                    </td>
+                    <td>
+                        @item.Rate
+                    </td>
+                    <td>
+                        @item.Category.Name
+                    </td>
+                    <td>
+                        <a href="/Create/Edit?categoryId=@item.Id" class="btn btn-dark">Edit</a>
+                        <a href="/Create/Delete?categoryId=@item.Id" class="btn btn-danger">Delete</a>
+
+                    </td>
+
+
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,51 @@
+﻿@model List<Category>
+<div class="row">
+    <div class="col-10">
+
+<h2>All Category</h2>
+    </div>
+    <div class="col-2">
+        
+
+            <a href="/Create/AddCategory" class="btn btn-warning">Add Category</a>
+       
+
+    </div>
+</div>
+
+<div class="row">
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Category Name</th>
+            <th scope="col">num of productes</th>
+
+            <th scope="col">Action</th>
+          
+        </tr>
+    </thead>
+    <tbody>
+       @foreach(var item in Model){
+       
+        <tr class="table-light">
+            <th scope="row">@item.Id</th>
+            <td>@item.Name</td>
+            <td>@item.Products.Count()</td>
+
+
+            <td>
+                        <a href="/Create/Edit?categoryId=@item.Id" class="btn btn-dark">Edit</a>
+                        <a href="/Create/Delete?categoryId=@item.Id" class="btn btn-danger">Delete</a>
+
+            </td>
+                   
+
+        </tr>
+       }
+       
+    </tbody>
+</table>
+
+</div>
